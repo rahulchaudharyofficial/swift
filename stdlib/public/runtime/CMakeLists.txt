@@ -238,6 +238,9 @@ foreach(sdk ${SWIFT_SDKS})
         set(concurrency_libs "-ldispatch -lBlocksRuntime")
       endif()
 
+      message(STATUS "SWIFT_CONCURRENCY_USES_DISPATCH value is ${SWIFT_CONCURRENCY_USES_DISPATCH}")
+      message(STATUS "concurrency_libs value is ${concurrency_libs}")
+
       set(linkfile ${lowercase_sdk}/static-stdlib-args.lnk)
       file(WRITE "${SWIFTSTATICLIB_DIR}/${linkfile}" "
 -ldl
@@ -250,6 +253,10 @@ ${concurrency_libs}
 -Xlinker -export-dynamic
 -Xlinker --exclude-libs
 -Xlinker ALL")
+
+      set(final_linkfile_contents)
+      file(READ "${SWIFTSTATICLIB_DIR}/${linkfile}" final_linkfile_contents)
+      message(STATUS "${SWIFTSTATICLIB_DIR}/${linkfile} contains this: ${final_linkfile_contents}")
 
       swift_install_in_component(FILES "${SWIFTSTATICLIB_DIR}/${linkfile}"
                                  DESTINATION "lib/swift_static/${lowercase_sdk}"
