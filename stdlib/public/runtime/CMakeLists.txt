@@ -239,6 +239,8 @@ foreach(sdk ${SWIFT_SDKS})
       endif()
 
       message(STATUS "SWIFT_CONCURRENCY_USES_DISPATCH value is ${SWIFT_CONCURRENCY_USES_DISPATCH}")
+      message(STATUS "SWIFT_ENABLE_EXPERIMENTAL_CONCURRENCY value is ${SWIFT_ENABLE_EXPERIMENTAL_CONCURRENCY}")
+      message(STATUS "SWIFT_CONCURRENCY_GLOBAL_EXECUTOR value is ${SWIFT_CONCURRENCY_GLOBAL_EXECUTOR}")
       message(STATUS "concurrency_libs value is ${concurrency_libs}")
 
       set(linkfile ${lowercase_sdk}/static-stdlib-args.lnk)
