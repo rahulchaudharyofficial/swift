@@ -235,7 +235,7 @@ foreach(sdk ${SWIFT_SDKS})
         set(android_libraries -llog)
         set(libpthread)
       elseif(SWIFT_CONCURRENCY_USES_DISPATCH)
-        set(concurrency_libs "-ldispatch -lBlocksRuntime")
+        set(concurrency_libs "-ldispatch -lBlocksRuntime -lDispatchStubs")
       endif()
 
       message(STATUS "SWIFT_CONCURRENCY_USES_DISPATCH value is ${SWIFT_CONCURRENCY_USES_DISPATCH}")
